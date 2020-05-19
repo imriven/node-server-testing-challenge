@@ -21,7 +21,7 @@ function getByUsername(username) {
 }
 
 function remove(id) {
-  return db("users").where({id}).del();
+  return db("users").where({ id }).del();
 }
 
 module.exports = {
@@ -30,4 +30,5 @@ module.exports = {
   getById,
   getByUsername,
   remove,
+  db,
 };

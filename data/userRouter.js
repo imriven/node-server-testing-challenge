@@ -11,7 +11,12 @@ router.get("/", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   db.remove(req.params.id)
-    .then((users) => res.status(204).send())
+    .then((count) => {
+      if (count === 1) {
+       return res.status(204).send()
+      }
+    return res.status(404).json({ error: "user not found" })
+  }) 
     .catch((err) => res.status(500).json({ error: "cannot delete user" }));
 });
 
